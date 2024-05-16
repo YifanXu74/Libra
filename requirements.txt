@@ -1,0 +1,12 @@
+torch
+torchvision
+transformers[torch]==4.38.2
+deepspeed
+sentencepiece
+omegaconf
+timm
+webdataset
+einops
+decord
+tensorboardX
+gradio

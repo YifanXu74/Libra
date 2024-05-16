@@ -1,0 +1,16 @@
+DATASETS/
+CHECKPOINTS/
+.vscode/
+backup/
+demo/debug.ipynb
+demo/libra2_demo.ipynb
+libra/models/libra2/
+**/__pycache__
+outputs/
+debug.py
+libra/configs/deepspeed_configs/ZeRO-3-yfxu.json
+libra/configs/debug.yaml
+libra/configs/libra_instruction_mmvp_mmvet.yaml
+libra/configs/libra_pretrain2.yaml
+libra/configs/backup/
+

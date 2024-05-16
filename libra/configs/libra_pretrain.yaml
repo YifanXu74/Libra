@@ -1,0 +1,132 @@
+model:
+  arch: libra_train_wrapper
+  pretrained: CHECKPOINTS/llama-2-7b-chat-hf-libra
+  
+  custom_kwargs:
+    vision_prediction_mode: "1d"
+    use_bridge: True
+    concat_signals: True
+    vision_embd_pdrop: 0.0
+    vision_resid_pdrop: 0.0
+
+  model_kwargs:
+    frozen_language: True
+
+  tokenizer_kwargs:
+    add_eos_token: False
+    padding_side: right
+    raw_output: True
+    model_max_length: 700
+    
+
+datasets:
+  # Training
+  libra_laion:
+    data_type: images
+    custom_params:
+      i2t_prob: 1.0
+      tokenizer_name: CHECKPOINTS/llama-2-7b-chat-hf-libra # prepare following README
+      label_mask_strategy: "instruction"
+      use_instruction: False
+      num_img_tokens: 578
+      deterministic: False
+      shape_ratio_threshold: 2.
+      continuous_prob_t2i: 0.1 # ununsed
+      pad_to_square_i2t: True # ununsed
+    vis_processor:
+        train:
+          name: "libra_image"
+          pretrained_path: CHECKPOINTS/openai-clip-vit-large-patch14-336 # prepare following README
+    text_processor:
+        train:
+          name: "libra_caption"
+          max_words: 64
+          lowercase: True
+          remove_html: False
+    build_info:
+      storage: Datasets/laion/{00000..07776}.tar # You need to specify your own data path.
+
+  # Validating, not necessary
+  libra_coco_caption:
+    data_type: images
+    custom_params:
+      i2t_prob: 1.0
+      tokenizer_name: CHECKPOINTS/llama-2-7b-chat-hf-libra # prepare following README
+      label_mask_strategy: "instruction"
+      use_instruction: False
+      num_img_tokens: 578
+      deterministic: False
+      pad_to_square_i2t: True # ununsed
+      sample_n: 5000
+
+    vis_processor:
+        eval:
+          name: "libra_image"
+          pretrained_path: CHECKPOINTS/openai-clip-vit-large-patch14-336 # prepare following README
+    text_processor:
+        eval:
+          name: "libra_caption"
+          max_words: 64
+          lowercase: True
+          remove_html: False
+    build_info:
+        images:
+          storage: 'DATASETS/coco/'
+        annotations:
+          val:
+            storage: 'DATASETS/coco/annotations/coco_karpathy_val.json'
+
+run:
+  ## lr_scheduler
+  lr_scheduler_type: "cosine"
+  # lr_scheduler_type: "constant_with_warmup"
+  learning_rate: 1e-4
+  warmup_ratio: 0.05
+  weight_decay: 0.01
+
+
+  ## optimizer: dafault AdamW
+  adam_beta1: 0.9
+  adam_beta2: 0.99
+  adam_epsilon: 1e-8
+
+  ## dataloader
+  max_steps: 40000
+  per_device_train_batch_size: 8 # total batch size: (per_device_train_batch_size: 8) * (gradient_accumulation_steps: 4) * (num_device_per_node: 8) * (num_node: 5) = 1280
+  gradient_accumulation_steps: 4
+  dataloader_num_workers: 8
+  dataloader_pin_memory: True
+
+  ## checkpointing
+  save_steps: 1000
+  save_strategy: "steps"
+  save_total_limit: 1
+
+  ## logging
+  logging_steps: 20
+  log_level: "info"
+  log_on_each_node: False
+  logging_strategy: "steps"
+
+  # deepspeed
+  deepspeed: libra/configs/deepspeed_configs/ZeRO-2.json
+
+  ## others
+  logging_first_step: True
+  max_grad_norm: 1.0
+  report_to: tensorboard
+  bf16: True
+  tf32: True
+  gradient_checkpointing: True
+  seed: 42
+  output_dir: "outputs/libra-base"
+  remove_unused_columns: False # Whether or not to automatically remove the columns unused by the model forward method.
+  disable_tqdm: False
+
+
+  # evaluation
+  evaluation_strategy: "steps"
+  prediction_loss_only: True
+  per_device_eval_batch_size: 8
+  bf16_full_eval: True
+  eval_steps: 200
