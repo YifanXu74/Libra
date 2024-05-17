@@ -74,21 +74,6 @@ class VQModel(torch.nn.Module):
         self.quant_conv = torch.nn.Conv2d(self.encoder.vision_tower.vision_model.config.hidden_size * len(self.encoder.select_layer) if self.use_clip else ddconfig["z_channels"], embed_dim, 1)
         self.post_quant_conv = torch.nn.Conv2d(embed_dim, ddconfig["z_channels"], 1)
 
-
-
-        # ############# dddebug  ####################
-        # self.encoder = CLIPVisionTower(vision_tower=self.encoder_name, square_output=True)
-        # self.inv_transform = transforms.Compose([transforms.Normalize(mean = [ 0., 0., 0. ],
-        #                                                          std = [1/v for v in self.encoder.image_processor.image_std]),
-        #                                     transforms.Normalize(mean = [-v for v in self.encoder.image_processor.image_mean],
-        #                                                          std = [ 1., 1., 1. ]),
-        #                                     ])
-        # self.encoder = Encoder(**ddconfig)
-        # self.quant_conv = torch.nn.Conv2d(ddconfig["z_channels"], embed_dim, 1)
-        # ###########################################################
-
-
-
         if ckpt_path is not None:
             self.init_from_ckpt(ckpt_path, ignore_keys=ignore_keys)
 

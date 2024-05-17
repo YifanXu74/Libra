@@ -10,3 +10,4 @@ einops
 decord
 tensorboardX
 gradio
+jupyter
