@@ -4,7 +4,7 @@ This repository provides a simple implementation of Libra in PyTorch, including 
 
 Please refer to the ICML 2024 paper:
 
-[**Libra: Building Decoupled Vision System on Large Language Models**]()
+[**Libra: Building Decoupled Vision System on Large Language Models**](https://arxiv.org/abs/2405.10140)
 
 Yifan Xu,  Xiaoshan Yang, Yaguang Song, Changsheng Xu
 
