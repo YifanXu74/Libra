@@ -1,0 +1,13 @@
+name: Discussions
+description: General discussions about the work
+title: "[Discussion] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for your interest in our work.  Please feel free to start a discussion :)
+  - type: textarea
+    id: discussion
+    attributes:
+      label: Discussion
+      placeholder: Start discussion here...
