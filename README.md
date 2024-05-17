@@ -115,13 +115,13 @@ We provide the pretrained base model (Libra-Base) and the model after instructio
 | Libra-Chat  | [HuggingFace](https://huggingface.co/YifanXu/libra-11b-chat) |
 
 
-## Citation
+<!-- ## Citation
 
 If you find our work useful in your research, please consider citing:
 
 ```
 
-```
+``` -->
 
 
 
