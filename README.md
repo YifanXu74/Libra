@@ -112,12 +112,11 @@ We provide the pretrained base model (Libra-Base) and the model after instructio
 
 <!-- ## Citation
 
-If you find our work useful in your research, please consider citing:
+If you find our work helpful, please consider citing:
 
 ```
-
 ``` -->
 
+## Acknowledgments
 
-
-
+We'd like to thank Menghao Hu from Pengcheng Laboratory for data management and Chaoyou Fu from Tencent for early discussion. The code was built upon [LAVIS](https://github.com/salesforce/LAVIS) and [Huggingface Trainer](https://huggingface.co/docs/transformers/main_classes/trainer). Thanks for their great works.
