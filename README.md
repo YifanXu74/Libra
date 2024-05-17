@@ -66,13 +66,8 @@ CHECKPOINTS/
     │   # original llama files
     |
     ├── config.json
-    ├── generation_config.json
     ├── pytorch_model-00001-of-00002.bin
-    ├── pytorch_model-00002-of-00002.bin
-    ├── pytorch_model.bin.index.json
-    ├── special_tokens_map.json
-    ├── tokenizer_config.json
-    ├── tokenizer.json
+    ├── ...
     ├── tokenizer.model
     │   
     │   # newly added vision tokenizer
