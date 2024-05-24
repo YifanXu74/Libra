@@ -42,7 +42,7 @@ DATASETS/
 ```
       
 
-**CHECKPOINTS.** If you want to train Libra from scratch, several praparations are needed.
+**CHECKPOINTS.** If you want to train Libra from scratch, several praparations are needed. *Otherwise you can just skip this step.*
 
 1. Prepare the huggingface version of the ``llama-2-7b-chat-hf`` model. Please refer to [here](https://huggingface.co/docs/transformers/main/model_doc/llama2). Then rename the folder name to ``llama-2-7b-chat-hf-libra``.
 2. Merge the vision tokenizer weight into the pretrained llama path. The pretrained vision tokenizer weight can be found [here](https://huggingface.co/YifanXu/libra-vision-tokenizer).
