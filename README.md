@@ -10,7 +10,7 @@ Yifan Xu,  Xiaoshan Yang, Yaguang Song, Changsheng Xu
 
 ## Preparation
 
-**Environment.** Install the required dependencies:
+**ENVIRONMENT.** Install the required dependencies:
 
 ```
 pip install -r requirements.txt
