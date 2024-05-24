@@ -45,7 +45,7 @@ DATASETS/
 **CHECKPOINTS.** If you want to train Libra from scratch, several praparations are needed.
 
 1. Prepare the huggingface version of the ``llama-2-7b-chat-hf`` model. Please refer to [here](https://huggingface.co/docs/transformers/main/model_doc/llama2). Then rename the folder name to ``llama-2-7b-chat-hf-libra``.
-2. Merge the vision tokenizer weight into the pretrained llama path. The pretrained vision tokenizer weight can be found [here]().
+2. Merge the vision tokenizer weight into the pretrained llama path. The pretrained vision tokenizer weight can be found [here](https://huggingface.co/YifanXu/libra-vision-tokenizer).
 3. Download the pretrained CLIP model in huggingface and merge it into the pretrained model paths. The CLIP model can be downloaded [here](https://huggingface.co/openai/clip-vit-large-patch14-336).
 
 If you want to run the official Libra models, you need to download [``libra-11b-chat``](https://huggingface.co/YifanXu/libra-11b-chat) or [``libra-11b-base``](https://huggingface.co/YifanXu/libra-11b-base).

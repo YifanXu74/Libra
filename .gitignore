@@ -13,4 +13,6 @@ libra/configs/debug.yaml
 libra/configs/libra_instruction_mmvp_mmvet.yaml
 libra/configs/libra_pretrain2.yaml
 libra/configs/backup/
+debug/
+libra/models/gemma/
 
