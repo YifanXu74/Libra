@@ -115,7 +115,7 @@ We provide the pretrained base model (Libra-Base) and the model after instructio
 If you find our work helpful, please consider citing:
 
 ```
-@InProceedings{xu2024_libra,
+@InProceedings{xu2024libra,
   title = {Libra: Building Decoupled Vision System on Large Language Models},
   author = {Xu, Yifan and Yang, Xiaoshan and Song, Yaguang and Xu, Changsheng},
   booktitle = {Proceedings of the 41st International Conference on Machine Learning},
